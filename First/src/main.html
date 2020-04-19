@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>サンプル</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="logo">
+      <img alt="vue logo" src="logo.png" />
+    </div>
+    <br />
+    <div id="msg">
+      <p v-bind:class="{capitalize: isCapital}" v-bind:value="message">
+        hello, vue.js!
+      </p>
+    </div>
+    <br />
+
+    <div id="product">
+      <table border="1" align="center">
+        <tr>
+          <th>しりとり</th>
+        </tr>
+        <tr v-for="item in items">
+          <td>{{item.name}}</td>
+        </tr>
+      </table>
+    </div>
+    <br />
+
+    <div id="app">
+      <template v-if="day >= 1">
+        <span class="num">新年まであと{{day}}日</span>
+        <button class="btn" v-on:click="onDeleteDay">減らす</button>
+      </template>
+      <template v-else>あけおめ</template>
+    </div>
+    <script src="https://jp.vuejs.org/js/vue.js"></script>
+    <script src="test01.js"></script>
+  </body>
+</html>
