@@ -1,29 +1,5 @@
-var msg = new Vue({
-  el: '#msg',
-  data: {
-    isCapital: true,
-  },
-});
+var msg = new Vue({});
 
-var product = new Vue({
-  el: '#product',
-  data: {
-    items: [
-      { code: 'A01', name: 'りんご' },
-      { code: 'B01', name: 'ゴリラ' },
-      { code: 'C01', name: 'ラッパー' },
-    ],
-  },
-});
+var product = new Vue({});
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    day: 10,
-  },
-  methods: {
-    onDeleteDay: function () {
-      this.day--;
-    },
-  },
-});
+var app = new Vue({});
