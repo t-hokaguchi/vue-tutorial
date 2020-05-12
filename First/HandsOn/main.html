@@ -12,7 +12,7 @@
     <br />
     <div id="msg">
       <!--文字のキャピタライズをしてみる-->
-      <p>hello, vue.js!</p>
+      <p v-bind:class="{capitalize: isCapital}">hello, vue.js!</p>
     </div>
     <br />
 
@@ -22,12 +22,20 @@
           <th>しりとり</th>
         </tr>
         <!--ここに表を挿入してみる-->
+        <tr v-for="item in items">
+          <td>{{item.name}}</td>
+        </tr>
       </table>
     </div>
     <br />
 
     <div id="app">
       <!--ここにクリック動作を入れてみる-->
+      <template v-if="day >= 1">
+        <span class="num">新年まであと{{day}}日</span>
+        <button class="btn" v-on:click="onDeleteDay">減らす</button>
+      </template>
+      <template v-else>{{msg}}</template>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="test01.js"></script>
