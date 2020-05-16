@@ -32,12 +32,10 @@
     <div id="app">
       <!--ここにクリック動作を入れてみる-->
       <template v-if="day >= 1">
-        <span class="num">あと {{day}} 日</span>
+        <span class="num">新年まであと{{day}}日</span>
         <button class="btn" v-on:click="onDeleteDay">減らす</button>
       </template>
-      <template v-else>
-        <span>あけおめ</span>
-      </template>
+      <template v-else>{{msg}}</template>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="test01.js"></script>
