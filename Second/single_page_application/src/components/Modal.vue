@@ -2,16 +2,43 @@
   <div id="overlay">
     <div id="content">
       <p>これがモーダルウィンドウです。</p>
-      <button v-on:click="closeModal">Close</button>
+      <button @click="selectCity">都市名</button><br/>
+      <button @click="closeModal">Close</button>
+      <ResultModal v-show="showResultModal" v-on:from-child="closeResultModal" :cityInfo="cityInfo"/>
     </div>
   </div>
 </template>
 
 <script>
+import ResultModal from './ResultModal'
 export default {
+  name: 'Modal',
+  components: {
+    ResultModal
+  },
+  data () {
+    return {
+      showResultModal: false,
+      cityInfo: {
+        cityId: String,
+        cityName: String
+      }
+    }
+  },
   methods: {
     closeModal () {
       this.$emit('from-child')
+    },
+    selectCity (cityInfo) {
+      console.log('selectCity')
+      this.showResultModal = true
+      this.cityInfo.cityId = '100000'
+      this.cityInfo.cityName = '京都市'
+    },
+    closeResultModal () {
+      this.showResultModal = false
+      this.cityInfo.cityId = ''
+      this.cityInfo.cityName = ''
     }
   }
 

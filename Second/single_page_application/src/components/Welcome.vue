@@ -4,12 +4,6 @@
     <router-link to="/">Go back Home</router-link><br>
     <button @click="openModal">Open modal</button>
     <Modal v-show="showModal" v-on:from-child="closeModal" />
-    <!-- <div id="overlay" v-show="showModal">
-      <div id="content">
-        <p>これがモーダルウィンドウです。</p>
-        <button v-on:click="closeModal">Close</button>
-      </div>
-    </div> -->
   </div>
 </template>
 
