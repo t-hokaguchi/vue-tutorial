@@ -34,7 +34,7 @@ export default {
   },
   mounted () {
     this.$axios
-      .get('http://weather.livedoor.com/forecast/webservice/json/v1?city=430010')
+      .get('http://weather.livedoor.com/forecast/webservice/json/v1?city=' + this.cityInfo.cityId)
       .then(response => {
         console.log(response)
         this.weatherForecast = response.data
