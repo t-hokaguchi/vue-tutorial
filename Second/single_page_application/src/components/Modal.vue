@@ -2,7 +2,7 @@
   <div id="overlay">
     <div id="content">
       <p>これがモーダルウィンドウです。</p>
-      <button @click="selectCity">都市名</button><br/>
+      <button @click="selectCity">熊本の天気予報をGET</button><br/>
       <button @click="closeModal">Close</button>
       <ResultModal v-show="showResultModal" v-on:from-child="closeResultModal" :cityInfo="cityInfo"/>
     </div>
@@ -32,8 +32,8 @@ export default {
     selectCity (cityInfo) {
       console.log('selectCity')
       this.showResultModal = true
-      this.cityInfo.cityId = '100000'
-      this.cityInfo.cityName = '京都市'
+      this.cityInfo.cityId = '430010'
+      this.cityInfo.cityName = '熊本市'
     },
     closeResultModal () {
       this.showResultModal = false

@@ -1,8 +1,21 @@
 <template>
   <div id="overlay">
     <div id="content">
-      <p>{{cityInfo.cityName}}の天気予報</p>
-      <span>ここに天気予報結果を表示</span><br/>
+      <h2>{{weatherForecast.title}}</h2>
+      <div>
+        <ul>
+          <li v-for="(forecast) in weatherForecast.forecasts" :key="forecast.date">
+            <span>{{forecast.dateLabel}}の天気</span>
+            <span>{{forecast.telop}}</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2>天気概要</h2>
+        <span style="white-space:pre-wrap; word-wrap:break-word;">
+        {{weatherForecast.description.text}}
+        </span>
+      </div>
       <button @click="closeResultModal">Close</button>
     </div>
   </div>
@@ -14,11 +27,17 @@ export default {
   props: {
     cityInfo: Object
   },
+  data () {
+    return {
+      weatherForecast: Object
+    }
+  },
   mounted () {
     this.$axios
-      .get('http://weather.livedoor.com/forecast/webservice/json/v1?city=400040')
+      .get('http://weather.livedoor.com/forecast/webservice/json/v1?city=430010')
       .then(response => {
         console.log(response)
+        this.weatherForecast = response.data
       })
   },
   methods: {
@@ -31,28 +50,29 @@ export default {
 </script>
 
 <style>
-#overlay{
-  /* 要素を重ねた時の順番 */
-  z-index:1;
+  #overlay {
+    /* 要素を重ねた時の順番 */
+    z-index: 1;
 
-  /* 画面全体を覆う設定 */
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background-color:rgba(0,0,0,0.5);
+    /* 画面全体を覆う設定 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
 
-  /* 画面の中央に要素を表示させる設定 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    /* 画面の中央に要素を表示させる設定 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-}
-#content{
-  z-index:2;
-  width:50%;
-  padding: 1em;
-  background:#fff;
-}
+  }
+
+  #content {
+    z-index: 2;
+    width: 50%;
+    padding: 1em;
+    background: #fff;
+  }
 </style>
