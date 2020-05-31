@@ -7,7 +7,8 @@ import VModal from 'vue-js-modal'
 import axios from 'axios'
 
 Vue.config.productionTip = false
-Vue.use(VModal, axios)
+Vue.use(VModal)
+Vue.prototype.$axios = axios
 
 /* eslint-disable no-new */
 new Vue({

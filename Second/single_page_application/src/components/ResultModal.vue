@@ -15,7 +15,7 @@ export default {
     cityInfo: Object
   },
   mounted () {
-    axios
+    this.$axios
       .get('http://weather.livedoor.com/forecast/webservice/json/v1?city=400040')
       .then(response => {
         console.log(response)
